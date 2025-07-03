@@ -26,6 +26,7 @@ const App = () => (
               <main className="flex-1 overflow-auto p-6">
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/dashboard" element={<Index />} />
                   {/* Future routes for other modules */}
                   <Route path="/inventario" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Inventário em desenvolvimento</h1></div>} />
                   <Route path="/transporte" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Transporte em desenvolvimento</h1></div>} />

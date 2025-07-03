@@ -13,7 +13,8 @@ import {
   User,
   Menu,
   Bell,
-  MessageCircle
+  MessageCircle,
+  Home
 } from "lucide-react"
 
 import {
@@ -29,8 +30,12 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
+const homeItems = [
+  { title: "Tela Inicial", url: "/", icon: Home },
+]
+
 const mainItems = [
-  { title: "Dashboard", url: "/", icon: BarChart3 },
+  { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
   { title: "Inventário & ABC/JIT", url: "/inventario", icon: Package },
   { title: "Transporte & TMS", url: "/transporte", icon: Truck },
   { title: "Monitoramento", url: "/monitoramento", icon: MapPin },
@@ -82,6 +87,23 @@ export function AppSidebar() {
 
       <SidebarContent className="px-3 py-4">
         <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu className="space-y-1">
+              {homeItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink to={item.url} className={getNavCls}>
+                      <item.icon className="w-5 h-5 flex-shrink-0" />
+                      {!isCollapsed && <span className="truncate">{item.title}</span>}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup className="mt-6">
           <SidebarGroupLabel className="text-sidebar-foreground/70 text-xs font-semibold uppercase tracking-wider mb-2">
             {!isCollapsed && "Principal"}
           </SidebarGroupLabel>
