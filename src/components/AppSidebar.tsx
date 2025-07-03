@@ -45,7 +45,7 @@ const businessItems = [
 ]
 
 export function AppSidebar() {
-  const { collapsed } = useSidebar()
+  const { state } = useSidebar()
   const location = useLocation()
   const currentPath = location.pathname
 
@@ -61,10 +61,12 @@ export function AppSidebar() {
         : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
     }`
 
+  const isCollapsed = state === "collapsed"
+
   return (
-    <Sidebar className={`${collapsed ? "w-16" : "w-64"} transition-all duration-300`}>
+    <Sidebar className={`${isCollapsed ? "w-16" : "w-64"} transition-all duration-300`}>
       <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
-        {!collapsed && (
+        {!isCollapsed && (
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-sidebar-primary flex items-center justify-center">
               <Truck className="w-5 h-5 text-sidebar-primary-foreground" />
@@ -81,7 +83,7 @@ export function AppSidebar() {
       <SidebarContent className="px-3 py-4">
         <SidebarGroup>
           <SidebarGroupLabel className="text-sidebar-foreground/70 text-xs font-semibold uppercase tracking-wider mb-2">
-            {!collapsed && "Principal"}
+            {!isCollapsed && "Principal"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
@@ -90,7 +92,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className={getNavCls}>
                       <item.icon className="w-5 h-5 flex-shrink-0" />
-                      {!collapsed && <span className="truncate">{item.title}</span>}
+                      {!isCollapsed && <span className="truncate">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -101,7 +103,7 @@ export function AppSidebar() {
 
         <SidebarGroup className="mt-6">
           <SidebarGroupLabel className="text-sidebar-foreground/70 text-xs font-semibold uppercase tracking-wider mb-2">
-            {!collapsed && "Negócios"}
+            {!isCollapsed && "Negócios"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
@@ -110,7 +112,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} className={getNavCls}>
                       <item.icon className="w-5 h-5 flex-shrink-0" />
-                      {!collapsed && <span className="truncate">{item.title}</span>}
+                      {!isCollapsed && <span className="truncate">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -120,7 +122,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      {!collapsed && (
+      {!isCollapsed && (
         <div className="p-4 border-t border-sidebar-border">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-sidebar-primary flex items-center justify-center">

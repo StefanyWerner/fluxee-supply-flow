@@ -18,7 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <SidebarProvider defaultOpen={true} collapsedWidth={64}>
+        <SidebarProvider defaultOpen={true}>
           <div className="min-h-screen flex w-full bg-background">
             <AppSidebar />
             <div className="flex-1 flex flex-col overflow-hidden">
