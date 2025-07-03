@@ -148,7 +148,7 @@ const Monitoramento = () => {
                 </div>
                 <div className="text-right">
                   <p className="font-semibold text-yellow-600">28°C</p>
-                  <p className="text-sm text-muted-foreground">Alerta: >25°C</p>
+                  <p className="text-sm text-muted-foreground">Alerta: &gt;25°C</p>
                 </div>
               </div>
             </div>
