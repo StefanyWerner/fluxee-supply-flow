@@ -8,6 +8,11 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import Index from "./pages/Index";
+import Dashboard from "./pages/Dashboard";
+import Inventario from "./pages/Inventario";
+import Transporte from "./pages/Transporte";
+import Monitoramento from "./pages/Monitoramento";
+import Governanca from "./pages/Governanca";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,12 +31,12 @@ const App = () => (
               <main className="flex-1 overflow-auto p-6">
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  <Route path="/dashboard" element={<Index />} />
-                  {/* Future routes for other modules */}
-                  <Route path="/inventario" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Inventário em desenvolvimento</h1></div>} />
-                  <Route path="/transporte" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Transporte em desenvolvimento</h1></div>} />
-                  <Route path="/monitoramento" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Monitoramento em desenvolvimento</h1></div>} />
-                  <Route path="/governanca" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Governança em desenvolvimento</h1></div>} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/inventario" element={<Inventario />} />
+                  <Route path="/transporte" element={<Transporte />} />
+                  <Route path="/monitoramento" element={<Monitoramento />} />
+                  <Route path="/governanca" element={<Governanca />} />
+                  {/* Placeholder routes for remaining modules */}
                   <Route path="/avaliacao" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Avaliação em desenvolvimento</h1></div>} />
                   <Route path="/capacitacao" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Capacitação em desenvolvimento</h1></div>} />
                   <Route path="/financeiro" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Financeiro em desenvolvimento</h1></div>} />
