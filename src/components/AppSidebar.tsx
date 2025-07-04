@@ -1,4 +1,3 @@
-
 import { useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import { 
@@ -54,7 +53,6 @@ export function AppSidebar() {
   const { state } = useSidebar()
   const location = useLocation()
   const currentPath = location.pathname
-  const { toast } = useToast()
 
   const isActive = (path: string) => {
     if (path === "/") return currentPath === "/"
@@ -69,16 +67,6 @@ export function AppSidebar() {
     }`
 
   const isCollapsed = state === "collapsed"
-
-  const handleModuleClick = (title: string, url: string) => {
-    // Para módulos em desenvolvimento, mostrar toast
-    if (url === "/avaliacao" || url === "/capacitacao" || url === "/financeiro") {
-      toast({
-        title: `Módulo ${title}`,
-        description: "Este módulo está em desenvolvimento",
-      })
-    }
-  }
 
   return (
     <Sidebar className={`${isCollapsed ? "w-16" : "w-64"} transition-all duration-300`}>
@@ -124,11 +112,7 @@ export function AppSidebar() {
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink 
-                      to={item.url} 
-                      className={getNavCls}
-                      onClick={() => handleModuleClick(item.title, item.url)}
-                    >
+                    <NavLink to={item.url} className={getNavCls}>
                       <item.icon className="w-5 h-5 flex-shrink-0" />
                       {!isCollapsed && <span className="truncate">{item.title}</span>}
                     </NavLink>
@@ -148,11 +132,7 @@ export function AppSidebar() {
               {businessItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink 
-                      to={item.url} 
-                      className={getNavCls}
-                      onClick={() => handleModuleClick(item.title, item.url)}
-                    >
+                    <NavLink to={item.url} className={getNavCls}>
                       <item.icon className="w-5 h-5 flex-shrink-0" />
                       {!isCollapsed && <span className="truncate">{item.title}</span>}
                     </NavLink>

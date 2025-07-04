@@ -13,6 +13,10 @@ import Inventario from "./pages/Inventario";
 import Transporte from "./pages/Transporte";
 import Monitoramento from "./pages/Monitoramento";
 import Governanca from "./pages/Governanca";
+import Avaliacao from "./pages/Avaliacao";
+import Capacitacao from "./pages/Capacitacao";
+import Financeiro from "./pages/Financeiro";
+import Perfil from "./pages/Perfil";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,11 +40,10 @@ const App = () => (
                   <Route path="/transporte" element={<Transporte />} />
                   <Route path="/monitoramento" element={<Monitoramento />} />
                   <Route path="/governanca" element={<Governanca />} />
-                  {/* Placeholder routes for remaining modules */}
-                  <Route path="/avaliacao" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Avaliação em desenvolvimento</h1></div>} />
-                  <Route path="/capacitacao" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Capacitação em desenvolvimento</h1></div>} />
-                  <Route path="/financeiro" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Módulo Financeiro em desenvolvimento</h1></div>} />
-                  <Route path="/perfil" element={<div className="text-center py-20"><h1 className="text-2xl font-bold">Perfil do Fornecedor em desenvolvimento</h1></div>} />
+                  <Route path="/avaliacao" element={<Avaliacao />} />
+                  <Route path="/capacitacao" element={<Capacitacao />} />
+                  <Route path="/financeiro" element={<Financeiro />} />
+                  <Route path="/perfil" element={<Perfil />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
