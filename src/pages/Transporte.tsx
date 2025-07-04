@@ -1,4 +1,3 @@
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,14 +11,31 @@ import {
   Plus,
   Navigation
 } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 const Transporte = () => {
+  const { toast } = useToast()
+
   const routes = [
     { id: "RT-001", origin: "São Paulo", destination: "Rio de Janeiro", vehicle: "V-023", driver: "João Silva", status: "Em andamento", distance: "430 km", eta: "14:30" },
     { id: "RT-002", origin: "Belo Horizonte", destination: "Salvador", vehicle: "V-015", driver: "Maria Santos", status: "Planejada", distance: "1.200 km", eta: "Amanhã 16:00" },
     { id: "RT-003", origin: "Curitiba", destination: "Florianópolis", vehicle: "V-008", driver: "Carlos Lima", status: "Concluída", distance: "300 km", eta: "-" },
     { id: "RT-004", origin: "Porto Alegre", destination: "Montevidéu", vehicle: "V-032", driver: "Ana Costa", status: "Em andamento", distance: "900 km", eta: "18:45" },
   ]
+
+  const handleNewRoute = () => {
+    toast({
+      title: "Nova Rota",
+      description: "Abrindo simulador de rotas para criação...",
+    })
+  }
+
+  const handlePlanRoute = () => {
+    toast({
+      title: "Planejar Rota",
+      description: "Iniciando planejamento de nova rota...",
+    })
+  }
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -92,7 +108,7 @@ const Transporte = () => {
                 <CardTitle>Simulador de Rotas</CardTitle>
                 <CardDescription>Otimização automática de rotas com IA</CardDescription>
               </div>
-              <Button className="gap-2">
+              <Button className="gap-2" onClick={handleNewRoute}>
                 <Route className="w-4 h-4" />
                 Nova Rota
               </Button>
@@ -178,7 +194,7 @@ const Transporte = () => {
               <CardTitle>Rotas em Andamento</CardTitle>
               <CardDescription>Monitoramento em tempo real das entregas</CardDescription>
             </div>
-            <Button className="gap-2">
+            <Button className="gap-2" onClick={handlePlanRoute}>
               <Plus className="w-4 h-4" />
               Planejar Rota
             </Button>

@@ -2,8 +2,20 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { MapPin } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 const TrackingMap = () => {
+  const { toast } = useToast()
+
+  const handleOpenFullMap = () => {
+    toast({
+      title: "Mapa Completo",
+      description: "Abrindo visualização completa do mapa de rastreamento...",
+    })
+    // Aqui você implementaria a abertura do mapa completo
+    console.log("Abrindo mapa completo")
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -15,7 +27,7 @@ const TrackingMap = () => {
           <MapPin className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
           <p className="text-muted-foreground">Integração com Google Maps</p>
           <p className="text-sm text-muted-foreground mt-2">Visualização em tempo real das rotas e posições dos veículos</p>
-          <Button className="mt-4">Abrir Mapa Completo</Button>
+          <Button className="mt-4" onClick={handleOpenFullMap}>Abrir Mapa Completo</Button>
         </div>
       </CardContent>
     </Card>

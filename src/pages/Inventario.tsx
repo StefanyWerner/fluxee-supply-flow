@@ -1,4 +1,3 @@
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,9 +11,11 @@ import {
   Plus,
   Filter
 } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 const Inventario = () => {
   const [searchTerm, setSearchTerm] = useState("")
+  const { toast } = useToast()
 
   const inventoryItems = [
     { id: "ABC-123", name: "Rolamento Industrial 6202", category: "A", stock: 5, minStock: 10, location: "A1-B3", status: "low" },
@@ -23,6 +24,20 @@ const Inventario = () => {
     { id: "JKL-012", name: "Correia Dentada 5M-850", category: "A", stock: 15, minStock: 8, location: "A2-C1", status: "ok" },
     { id: "MNO-345", name: "Vedação O-Ring 25x3", category: "C", stock: 85, minStock: 50, location: "C1-B2", status: "ok" },
   ]
+
+  const handleNewItem = () => {
+    toast({
+      title: "Novo Item",
+      description: "Abrindo formulário para adicionar novo item ao inventário...",
+    })
+  }
+
+  const handleFilters = () => {
+    toast({
+      title: "Filtros",
+      description: "Abrindo opções de filtro avançado...",
+    })
+  }
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -101,7 +116,7 @@ const Inventario = () => {
               <CardTitle>Gestão de Inventário</CardTitle>
               <CardDescription>Controle de estoque com classificação ABC e alertas JIT</CardDescription>
             </div>
-            <Button className="gap-2">
+            <Button className="gap-2" onClick={handleNewItem}>
               <Plus className="w-4 h-4" />
               Novo Item
             </Button>
@@ -118,7 +133,7 @@ const Inventario = () => {
                 className="pl-10"
               />
             </div>
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2" onClick={handleFilters}>
               <Filter className="w-4 h-4" />
               Filtros
             </Button>
