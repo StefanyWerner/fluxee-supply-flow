@@ -1,3 +1,4 @@
+
 import { useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import { 
@@ -73,8 +74,12 @@ export function AppSidebar() {
       <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
         {!isCollapsed && (
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-sidebar-primary flex items-center justify-center">
-              <Truck className="w-5 h-5 text-sidebar-primary-foreground" />
+            <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-1">
+              <img 
+                src="/lovable-uploads/baabdc93-8f7f-4f79-940a-4b94e9460622.png" 
+                alt="Fluxee Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <h1 className="text-lg font-bold text-sidebar-foreground">Fluxee</h1>
